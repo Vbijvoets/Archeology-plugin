@@ -33,6 +33,7 @@ if (missingLevels.length) throw new Error(`Missing Archaeology levels for: ${mis
 const appSource = await fs.readFile(path.join(destination, 'app.js'), 'utf8');
 if (!appSource.includes('const defaults = emptyProgress();')) throw new Error('Fresh installs must start with zero artefact counts');
 if (!appSource.includes("addEventListener('click',resetProgress)")) throw new Error('Reset handler validation failed');
+if (!appSource.includes("window.confirm('Reset all artefact counts to 0? This cannot be undone.')")) throw new Error('Reset must warn before clearing progress');
 
 const adConfigSource = await fs.readFile(path.join(destination, 'adconfig.js'), 'utf8');
 const adLoaderSource = await fs.readFile(path.join(destination, 'ad-loader.js'), 'utf8');
