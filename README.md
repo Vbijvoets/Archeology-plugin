@@ -23,7 +23,7 @@ A lightweight, dependency-free Alt1 Toolkit app for tracking RuneScape Archaeolo
 After this repository has been deployed to GitHub Pages, install it with:
 
 ```text
-alt1://addapp/https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/dist/appconfig.json
+alt1://addapp/https://vbijvoets.github.io/Archeology-plugin/dist/appconfig.json
 ```
 
 Replace `YOUR-USERNAME` and `YOUR-REPOSITORY` with the actual GitHub account and repository name.
