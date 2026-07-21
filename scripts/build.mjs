@@ -44,7 +44,7 @@ if (!websiteSource.includes('https://archeology-collections.fun/')) throw new Er
 if (!appSource.includes('https://archeology-collections.fun/dist/appconfig.json')) throw new Error('The Alt1 app must install from the custom domain');
 if (!websiteSource.includes('dist/app.js')) throw new Error('The website must include the collection tracker');
 if (!appSource.includes("addEventListener('input',event")) throw new Error('Artefact counts must save on every input');
-if (!websiteSource.includes('data-view="planner"') || !appSource.includes('function optimisePlan(cap)')) throw new Error('The Best 25 collection planner is missing');
+if (!websiteSource.includes('data-view="planner"') || !websiteSource.includes('data-view="planner120"') || !appSource.includes('function optimisePlan(cap)')) throw new Error('The Best 25 collection planners are missing');
 if (!adsText.includes('pub-3112681455071923')) throw new Error('ads.txt must contain the AdSense publisher ID');
 if (!robotsText.includes('https://archeology-collections.fun/sitemap.xml')) throw new Error('robots.txt must reference the sitemap');
 if (!sitemapText.includes('https://archeology-collections.fun/')) throw new Error('sitemap.xml must use the custom domain');

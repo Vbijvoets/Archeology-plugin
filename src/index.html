@@ -30,6 +30,7 @@
     <button data-view="materials">Materials</button>
     <button data-view="summary">Summary</button>
     <button data-view="planner">Best 25</button>
+    <button data-view="planner120">99–120</button>
   </nav>
   <main>
     <section id="collectionsView" class="view active">
@@ -44,13 +45,8 @@
     </section>
     <section id="materialsView" class="view"><div id="materialsContent"></div></section>
     <section id="summaryView" class="view"><div id="summaryContent"></div></section>
-    <section id="plannerView" class="view">
-      <div class="planner-toolbar" role="group" aria-label="Archaeology level">
-        <button type="button" class="plan-toggle active" data-plan-cap="98">Under level 99</button>
-        <button type="button" class="plan-toggle" data-plan-cap="99">At level 99</button>
-      </div>
-      <div id="plannerContent"></div>
-    </section>
+    <section id="plannerView" class="view"><div id="plannerContent"></div></section>
+    <section id="planner120View" class="view"><div id="planner120Content"></div></section>
   </main>
   <aside id="adSlot" class="ad-slot" aria-label="Advertisement" hidden>
     <span class="ad-label">Advertisement</span>
