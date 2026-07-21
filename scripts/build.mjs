@@ -25,6 +25,6 @@ if (!Array.isArray(collections) || collections.length === 0) throw new Error('No
 
 const appSource = await fs.readFile(path.join(destination, 'app.js'), 'utf8');
 if (!appSource.includes('const defaults = emptyProgress();')) throw new Error('Fresh installs must start with zero artefact counts');
-if (!appSource.includes("textContent='All artefact counts reset to 0'")) throw new Error('Reset handler validation failed');
+if (!appSource.includes("addEventListener('click',resetProgress)")) throw new Error('Reset handler validation failed');
 
 console.log(`Built dist with ${collections.length} collections and ${collections.reduce((sum, item) => sum + item.artifacts.length, 0)} artefacts.`);
