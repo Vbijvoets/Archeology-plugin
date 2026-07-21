@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#17130d">
+  <title>Archaeology Collections</title>
+  <link rel="icon" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div><p class="eyebrow">ALT1 TOOLKIT</p><h1>Archaeology Collections</h1></div>
+    <button id="installBtn" class="ghost" hidden>Add to Alt1</button>
+  </header>
+  <nav class="tabs" aria-label="Main menu">
+    <button data-view="collections" class="active">Collections</button>
+    <button data-view="materials">Materials</button>
+    <button data-view="summary">Summary</button>
+  </nav>
+  <main>
+    <section id="collectionsView" class="view active">
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search collection or artefact…" aria-label="Search">
+        <select id="groupFilter" aria-label="Collection type"><option value="all">All</option><option value="Collectors">Collectors</option><option value="Museum">Museum</option></select>
+      </div>
+      <div class="layout">
+        <aside id="collectionList" class="collection-list" aria-label="Collections"></aside>
+        <article id="collectionDetail" class="detail"></article>
+      </div>
+    </section>
+    <section id="materialsView" class="view"><div id="materialsContent"></div></section>
+    <section id="summaryView" class="view"><div id="summaryContent"></div></section>
+  </main>
+  <footer><span id="saveStatus">Saved locally</span><div><button id="exportBtn" class="link-button">Export</button><label class="link-button file-label">Import<input id="importInput" type="file" accept="application/json"></label><button id="resetBtn" class="link-button danger">Reset</button></div></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
