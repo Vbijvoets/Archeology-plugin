@@ -1,0 +1,34 @@
+.ad-slot {
+  margin: 0 10px 8px;
+  padding: 5px 8px;
+  border: 1px solid #2b241a;
+  border-radius: 4px;
+  background: #100e0b;
+  text-align: center;
+}
+
+.ad-slot[hidden] {
+  display: none;
+}
+
+.ad-label {
+  display: block;
+  margin-bottom: 2px;
+  color: #756c5e;
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.ad-mount {
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ad-mount iframe,
+.ad-mount img {
+  max-width: 100%;
+}

@@ -15,6 +15,7 @@ A lightweight, dependency-free Alt1 Toolkit app for tracking RuneScape Archaeolo
 - JSON progress import and export
 - Reset all counters to zero
 - No screen, game-state, or overlay permissions
+- Optional unobtrusive advertisement slot below the main content
 - Familiar `src` and `dist` structure, modelled after established Alt1 repositories
 - Dependency-free npm build and local development scripts
 
@@ -58,6 +59,24 @@ http://127.0.0.1:8765/
 ```
 
 `npm run build` validates the manifest and collection data, then recreates `dist`. `npm run dev` serves `dist` at the local URL above. Opening `index.html` directly is sufficient for basic browser testing, but the local server more closely matches Alt1 and GitHub Pages.
+
+## Optional advertising
+
+The advertisement area is disabled and completely hidden by default. It supports Google AdSense only when the GitHub Pages site is opened in a normal browser. The loader exits before contacting Google whenever `window.alt1` is present, because Alt1's Windows Chromium WebView is not one of Google's publicly supported WebView integrations.
+
+After Google approves the website, create a responsive display unit and edit `src/adconfig.js`:
+
+```js
+window.ARCHAEOLOGY_AD_CONFIG = Object.freeze({
+  enabled: true,
+  client: 'ca-pub-YOUR-PUBLISHER-ID',
+  slot: 'YOUR-NUMERIC-AD-SLOT-ID'
+});
+```
+
+Use the exact publisher and slot IDs supplied by Google. Run `npm run build` and deploy the generated `dist` directory. Revenue is credited only to the configured AdSense account. The slot is labelled `Advertisement`, never opens a popup or overlay, and stays hidden when opened inside Alt1, when unconfigured, when blocked, or when Google returns no ad.
+
+Before enabling AdSense, add the privacy information and Google-certified consent mechanism required for visitors in the EEA, UK, and Switzerland.
 
 ## Project structure
 
@@ -108,7 +127,7 @@ Progress is stored in the browser's `localStorage` under `archaeology-collection
 
 ## Privacy
 
-The app has no analytics, accounts, advertising, or remote API calls. Progress stays in the browser unless the user explicitly exports it.
+Progress stays in the browser unless the user explicitly exports it. Advertising is disabled by default, so the unconfigured app makes no advertising or analytics requests. When configured, AdSense loads only on the normal website and never inside Alt1. Google may process visitor data on the website; document this and implement the required consent before deployment.
 
 ## Contributing
 

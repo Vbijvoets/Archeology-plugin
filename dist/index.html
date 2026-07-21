@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#17130d">
+  <meta name="google-adsense-account" content="ca-pub-3112681455071923">
   <title>Archaeology Collections</title>
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ads.css">
   <style>
     .collection-materials{height:160px;margin:12px 0;padding:10px;border:1px solid var(--line);border-radius:5px;background:#100d09;overflow:auto;scrollbar-gutter:stable}
     .collection-materials h3{margin:0 0 8px;font:15px Georgia,serif;color:var(--gold2)}
@@ -19,7 +21,7 @@
 </head>
 <body>
   <header class="app-header">
-    <div><p class="eyebrow">ALT1 TOOLKIT</p><h1>Archaeology Collections</h1></div>
+    <div><h1>Archaeology Collections</h1></div>
     <button id="installBtn" class="ghost" hidden>Add to Alt1</button>
   </header>
   <nav class="tabs" aria-label="Main menu">
@@ -41,8 +43,14 @@
     <section id="materialsView" class="view"><div id="materialsContent"></div></section>
     <section id="summaryView" class="view"><div id="summaryContent"></div></section>
   </main>
+  <aside id="adSlot" class="ad-slot" aria-label="Advertisement" hidden>
+    <span class="ad-label">Advertisement</span>
+    <div id="adMount" class="ad-mount"></div>
+  </aside>
   <footer><span id="saveStatus">Saved locally</span><div><button id="exportBtn" type="button" class="link-button">Export</button><label class="link-button file-label">Import<input id="importInput" type="file" accept="application/json"></label><button id="resetBtn" type="button" class="link-button danger">Reset</button></div></footer>
   <script src="data.js"></script>
   <script src="app.js"></script>
+  <script src="adconfig.js"></script>
+  <script src="ad-loader.js"></script>
 </body>
 </html>
