@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const source = path.join(root, 'src');
 const destination = path.join(root, 'dist');
-const files = ['index.html', 'styles.css', 'ads.css', 'planner.css', 'app.js', 'data.js', 'levels.js', 'icon.png', 'appconfig.json', 'adconfig.js', 'ad-loader.js'];
+const files = ['index.html', 'styles.css', 'ads.css', 'planner.css', 'app.js', 'data.js', 'levels.js', 'collections-2026.js', 'icon.png', 'appconfig.json', 'adconfig.js', 'ad-loader.js'];
 
 await fs.rm(destination, { recursive: true, force: true });
 await fs.mkdir(destination, { recursive: true });
@@ -24,8 +24,12 @@ if (!icon.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])))
 const sandbox = { window: {} };
 vm.runInNewContext(await fs.readFile(path.join(destination, 'data.js'), 'utf8'), sandbox);
 vm.runInNewContext(await fs.readFile(path.join(destination, 'levels.js'), 'utf8'), sandbox);
+vm.runInNewContext(await fs.readFile(path.join(destination, 'collections-2026.js'), 'utf8'), sandbox);
 const collections = sandbox.window.ARCHAEOLOGY_DATA?.collections;
 if (!Array.isArray(collections) || collections.length === 0) throw new Error('No collection data found');
+const expectedCollections = ['Museum - Training Weapons', 'Guthixian I', 'Museum - Guthixian I', 'Guthixian II', 'Museum - Guthixian II', 'Dragonkin II'];
+const missingCollections = expectedCollections.filter(name => !collections.some(collection => collection.name === name));
+if (collections.length !== 79 || missingCollections.length) throw new Error(`Expected all 79 collections; missing: ${missingCollections.join(', ') || 'none'}`);
 const levels = sandbox.window.ARCHAEOLOGY_LEVELS;
 const missingLevels = [...new Set(collections.flatMap(collection => collection.artifacts.map(artifact => artifact.name)))].filter(name => !Number.isInteger(levels?.[name]));
 if (missingLevels.length) throw new Error(`Missing Archaeology levels for: ${missingLevels.join(', ')}`);
