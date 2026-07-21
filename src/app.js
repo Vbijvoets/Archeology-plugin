@@ -42,7 +42,7 @@
   document.querySelector('#search').addEventListener('input',renderCollections);document.querySelector('#groupFilter').addEventListener('change',renderCollections);document.querySelector('#exportBtn').addEventListener('click',exportState);
   document.querySelector('#importInput').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const parsed=JSON.parse(await file.text());state={...defaults,...(parsed.progress||parsed)};saveState();showView(activeView)}catch{alert('This is not a valid progress export.')}e.target.value='';});
   document.querySelector('#resetBtn').addEventListener('click',resetProgress);
-  const install=document.querySelector('#installBtn');if(window.alt1){const configUrl='https://archeology-collections.fun/dist/appconfig.json';install.hidden=false;try{window.alt1.identifyAppUrl(configUrl)}catch{}install.addEventListener('click',()=>{try{window.alt1.identifyAppUrl(configUrl)}catch{}})}
+  const install=document.querySelector('#installBtn');if(window.alt1&&install){const configUrl='https://archeology-collections.fun/dist/appconfig.json';install.hidden=false;try{window.alt1.identifyAppUrl(configUrl)}catch{}install.addEventListener('click',()=>{try{window.alt1.identifyAppUrl(configUrl)}catch{}})}
   renderCollections();
   if(hasSavedProgress)document.querySelector('#saveStatus').textContent='Progress loaded from this browser';
 })();

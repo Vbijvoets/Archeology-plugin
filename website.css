@@ -1,5 +1,4 @@
 body.website{min-height:100vh;background:radial-gradient(circle at top,#241b10 0,#0e0c09 420px)}
-.install-link{margin-left:auto;text-decoration:none}
 .website .tabs{top:0}
 .website .layout{grid-template-columns:190px 1fr;min-height:560px}
 .website .collection-list{max-height:720px}
@@ -7,4 +6,4 @@ body.website{min-height:100vh;background:radial-gradient(circle at top,#241b10 0
 .privacy-note span{color:var(--gold);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
 .privacy-note h2{margin:4px 0 0;color:var(--gold2);font:18px Georgia,serif}
 .privacy-note p{margin:0;color:var(--muted);line-height:1.65}
-@media(max-width:680px){.website .layout{grid-template-columns:1fr}.install-link{display:none}.privacy-note{grid-template-columns:1fr;gap:10px}}
+@media(max-width:680px){.website .layout{grid-template-columns:1fr}.privacy-note{grid-template-columns:1fr;gap:10px}}
