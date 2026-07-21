@@ -1,9 +1,9 @@
 {
   "appName": "Archaeology Collections",
   "description": "Archaeology collection, material, XP and chronote tracker based on the supplied Excel workbook.",
-  "appUrl": "https://vbijvoets.github.io/Archeology-plugin/dist/index.html",
-  "configUrl": "https://vbijvoets.github.io/Archeology-plugin/dist/appconfig.json",
-  "iconUrl": "https://vbijvoets.github.io/Archeology-plugin/dist/icon.png",
+  "appUrl": "./index.html",
+  "configUrl": "./appconfig.json",
+  "iconUrl": "./icon.png",
   "defaultWidth": 430,
   "defaultHeight": 720,
   "minWidth": 360,
@@ -11,6 +11,5 @@
   "maxWidth": 1200,
   "maxHeight": 1200,
   "requestHandlers": [],
-  "activators": [],
-  "permissions": ""
+  "activators": []
 }
