@@ -20,6 +20,7 @@
   <link rel="icon" type="image/png" href="dist/icon.png">
   <link rel="stylesheet" href="dist/styles.css">
   <link rel="stylesheet" href="dist/ads.css">
+  <link rel="stylesheet" href="dist/planner.css">
   <link rel="stylesheet" href="website.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3112681455071923" crossorigin="anonymous"></script>
 </head>
@@ -31,6 +32,7 @@
     <button data-view="collections" class="active">Collections</button>
     <button data-view="materials">Materials</button>
     <button data-view="summary">Summary</button>
+    <button data-view="planner">Best 25</button>
   </nav>
   <main>
     <section id="collectionsView" class="view active">
@@ -45,6 +47,13 @@
     </section>
     <section id="materialsView" class="view"><div id="materialsContent"></div></section>
     <section id="summaryView" class="view"><div id="summaryContent"></div></section>
+    <section id="plannerView" class="view">
+      <div class="planner-toolbar" role="group" aria-label="Archaeology level">
+        <button type="button" class="plan-toggle active" data-plan-cap="98">Under level 99</button>
+        <button type="button" class="plan-toggle" data-plan-cap="99">At level 99</button>
+      </div>
+      <div id="plannerContent"></div>
+    </section>
   </main>
   <aside id="adSlot" class="ad-slot" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span><div id="adMount" class="ad-mount"></div></aside>
   <footer class="tracker-footer"><span id="saveStatus">Saved in this browser</span><div><button id="exportBtn" type="button" class="link-button">Export</button><label class="link-button file-label">Import<input id="importInput" type="file" accept="application/json"></label><button id="resetBtn" type="button" class="link-button danger">Reset</button></div></footer>

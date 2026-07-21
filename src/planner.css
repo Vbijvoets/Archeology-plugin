@@ -1,0 +1,16 @@
+.tabs{grid-template-columns:repeat(4,1fr)}
+.planner-toolbar{display:flex;gap:6px;margin-bottom:12px}
+.plan-toggle{border:1px solid var(--line);border-radius:5px;background:var(--panel2);color:var(--muted);padding:8px 12px}
+.plan-toggle.active{border-color:var(--gold);background:#2e2112;color:var(--gold2)}
+.plan-intro{max-width:820px;margin:-5px 0 14px;color:var(--muted);line-height:1.6}
+.plan-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.plan-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.plan-item{display:grid;grid-template-columns:30px minmax(0,1fr) auto;align-items:center;gap:9px;padding:9px;border:1px solid #302719;border-radius:5px;background:rgba(23,19,13,.92)}
+.plan-rank{display:grid;width:26px;height:26px;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--gold2);font-size:11px}
+.plan-item h3{margin:0;color:var(--text);font-size:13px}
+.plan-item p{margin:2px 0 0;color:var(--muted);font-size:11px}
+.plan-item .badge{white-space:nowrap}
+.plan-note{margin:12px 0 0;padding:10px;border-left:2px solid var(--gold);background:#100d09;color:var(--muted);font-size:11px}
+.plan-summary .card{padding:9px}
+.plan-summary .card strong{font-size:18px}
+@media(max-width:680px){.plan-summary{grid-template-columns:repeat(2,1fr)}.plan-list{grid-template-columns:1fr}.plan-item{grid-template-columns:30px minmax(0,1fr)}.plan-item .badge{grid-column:2;justify-self:start}.plan-toggle{flex:1;padding-inline:6px}}

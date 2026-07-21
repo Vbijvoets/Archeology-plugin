@@ -9,6 +9,7 @@
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="ads.css">
+  <link rel="stylesheet" href="planner.css">
   <style>
     .collection-materials{height:160px;margin:12px 0;padding:10px;border:1px solid var(--line);border-radius:5px;background:#100d09;overflow:auto;scrollbar-gutter:stable}
     .collection-materials h3{margin:0 0 8px;font:15px Georgia,serif;color:var(--gold2)}
@@ -28,6 +29,7 @@
     <button data-view="collections" class="active">Collections</button>
     <button data-view="materials">Materials</button>
     <button data-view="summary">Summary</button>
+    <button data-view="planner">Best 25</button>
   </nav>
   <main>
     <section id="collectionsView" class="view active">
@@ -42,6 +44,13 @@
     </section>
     <section id="materialsView" class="view"><div id="materialsContent"></div></section>
     <section id="summaryView" class="view"><div id="summaryContent"></div></section>
+    <section id="plannerView" class="view">
+      <div class="planner-toolbar" role="group" aria-label="Archaeology level">
+        <button type="button" class="plan-toggle active" data-plan-cap="98">Under level 99</button>
+        <button type="button" class="plan-toggle" data-plan-cap="99">At level 99</button>
+      </div>
+      <div id="plannerContent"></div>
+    </section>
   </main>
   <aside id="adSlot" class="ad-slot" aria-label="Advertisement" hidden>
     <span class="ad-label">Advertisement</span>
