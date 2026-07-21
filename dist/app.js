@@ -8,12 +8,13 @@
   const keyFor = (collection, artifact) => `${collection.name}::${artifact.name}`;
   const emptyProgress = () => Object.fromEntries(DATA.collections.flatMap(c => c.artifacts.map(a => [keyFor(c,a), { damaged: 0, restored: 0 }])));
   const defaults = emptyProgress();
+  let hasSavedProgress = false;
   let state = loadState();
   let selected = DATA.collections[0]?.name;
   let activeView = 'collections';
 
-  function loadState(){ try { return { ...defaults, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') }; } catch { return { ...defaults }; } }
-  function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); const el=document.querySelector('#saveStatus'); el.textContent='Saved at '+new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); }
+  function loadState(){try{const saved=localStorage.getItem(STORAGE_KEY);hasSavedProgress=Boolean(saved);return{...defaults,...JSON.parse(saved||'{}')}}catch{return{...defaults}}}
+  function saveState(){const el=document.querySelector('#saveStatus');try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));hasSavedProgress=true;el.textContent='Saved in this browser at '+new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}catch{el.textContent='Browser storage is unavailable'}}
   function values(c,a){ return state[keyFor(c,a)] || {damaged:0,restored:0}; }
   function calcCollection(c){
     const owned=c.artifacts.map(a=>{const v=values(c,a);return v.damaged+v.restored});
@@ -37,9 +38,11 @@
   function exportState(){const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),progress:state},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='archaeology-collections-progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
   function resetProgress(){localStorage.removeItem(STORAGE_KEY);state=emptyProgress();localStorage.setItem(STORAGE_KEY,JSON.stringify(state));showView(activeView);document.querySelector('#saveStatus').textContent='All artefact counts are 0';}
   document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+  document.querySelector('#collectionDetail').addEventListener('input',event=>{const input=event.target.closest('.qty');if(!input)return;const c=DATA.collections.find(item=>item.name===selected);const a=c?.artifacts[Number(input.dataset.index)];if(!c||!a)return;const v=values(c,a);v[input.dataset.field]=Math.max(0,Math.floor(Number(input.value)||0));state[keyFor(c,a)]=v;saveState();});
   document.querySelector('#search').addEventListener('input',renderCollections);document.querySelector('#groupFilter').addEventListener('change',renderCollections);document.querySelector('#exportBtn').addEventListener('click',exportState);
   document.querySelector('#importInput').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const parsed=JSON.parse(await file.text());state={...defaults,...(parsed.progress||parsed)};saveState();showView(activeView)}catch{alert('This is not a valid progress export.')}e.target.value='';});
   document.querySelector('#resetBtn').addEventListener('click',resetProgress);
-  const install=document.querySelector('#installBtn');if(window.alt1){const configUrl='https://vbijvoets.github.io/Archeology-plugin/dist/appconfig.json';install.hidden=false;try{window.alt1.identifyAppUrl(configUrl)}catch{}install.addEventListener('click',()=>{try{window.alt1.identifyAppUrl(configUrl)}catch{}})}
+  const install=document.querySelector('#installBtn');if(window.alt1){const configUrl='https://archeology-collections.fun/dist/appconfig.json';install.hidden=false;try{window.alt1.identifyAppUrl(configUrl)}catch{}install.addEventListener('click',()=>{try{window.alt1.identifyAppUrl(configUrl)}catch{}})}
   renderCollections();
+  if(hasSavedProgress)document.querySelector('#saveStatus').textContent='Progress loaded from this browser';
 })();

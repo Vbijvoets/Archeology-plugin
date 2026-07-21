@@ -19,15 +19,15 @@ A lightweight, dependency-free Alt1 Toolkit app for tracking RuneScape Archaeolo
 - Familiar `src` and `dist` structure, modelled after established Alt1 repositories
 - Dependency-free npm build and local development scripts
 
-## Install from GitHub Pages
+## Website and Alt1 installation
 
-After this repository has been deployed to GitHub Pages, install it with:
+Website: `https://archeology-collections.fun/`
+
+Install the tracker in Alt1 with:
 
 ```text
-alt1://addapp/https://vbijvoets.github.io/Archeology-plugin/dist/appconfig.json
+alt1://addapp/https://archeology-collections.fun/dist/appconfig.json
 ```
-
-Replace `YOUR-USERNAME` and `YOUR-REPOSITORY` with the actual GitHub account and repository name.
 
 If the protocol link does not open, browse to the deployed `index.html` inside Alt1's built-in browser and click **Add app** in the top-right corner.
 
@@ -36,16 +36,17 @@ If the protocol link does not open, browse to the deployed `index.html` inside A
 1. Fork or upload this folder as a GitHub repository.
 2. Open the repository's **Settings → Pages**.
 3. Under **Build and deployment**, select **GitHub Actions** as the source.
-4. Push to `main`, or manually run the **Deploy static site to GitHub Pages** workflow.
+4. Push to `master`, or manually run the **Deploy static site to GitHub Pages** workflow.
 5. Wait for the deployment to finish under the **Actions** tab.
-6. Open `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/dist/` to verify the app.
-7. Share the Alt1 installation URL shown above.
+6. Set the Pages custom domain to `archeology-collections.fun` and configure the domain's DNS records.
+7. Open `https://archeology-collections.fun/` and `https://archeology-collections.fun/dist/` to verify the website and Alt1 app.
+8. Share the Alt1 installation URL shown above.
 
 The included workflow runs the dependency-free build and publishes the repository as a static site. No secrets or package installation are required.
 
 ## Local development
 
-Node.js 18 or newer is recommended. No `npm install` step is needed because the project has no package dependencies.
+Node.js 24 or newer is recommended. No `npm install` step is needed because the project has no package dependencies.
 
 ```text
 npm run build
@@ -58,7 +59,7 @@ Then open:
 http://127.0.0.1:8765/
 ```
 
-`npm run build` validates the manifest and collection data, then recreates `dist`. `npm run dev` serves `dist` at the local URL above. Opening `index.html` directly is sufficient for basic browser testing, but the local server more closely matches Alt1 and GitHub Pages.
+`npm run build` validates the manifest, collection data, website metadata and publisher files, then recreates `dist`. `npm run dev` serves the complete website at the local URL above. The standalone Alt1 view is available at `/dist/`.
 
 ## Optional advertising
 
