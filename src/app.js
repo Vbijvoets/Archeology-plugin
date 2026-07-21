@@ -6,8 +6,8 @@
   const integer = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
   const esc = value => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   const keyFor = (collection, artifact) => `${collection.name}::${artifact.name}`;
-  const defaults = Object.fromEntries(DATA.collections.flatMap(c => c.artifacts.map(a => [keyFor(c,a), { damaged:a.damaged, restored:a.restored }])));
-  const emptyProgress = () => Object.fromEntries(Object.keys(defaults).map(key => [key, { damaged: 0, restored: 0 }]));
+  const emptyProgress = () => Object.fromEntries(DATA.collections.flatMap(c => c.artifacts.map(a => [keyFor(c,a), { damaged: 0, restored: 0 }])));
+  const defaults = emptyProgress();
   let state = loadState();
   let selected = DATA.collections[0]?.name;
   let activeView = 'collections';
@@ -38,7 +38,7 @@
   document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
   document.querySelector('#search').addEventListener('input',renderCollections);document.querySelector('#groupFilter').addEventListener('change',renderCollections);document.querySelector('#exportBtn').addEventListener('click',exportState);
   document.querySelector('#importInput').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const parsed=JSON.parse(await file.text());state={...defaults,...(parsed.progress||parsed)};saveState();showView(activeView)}catch{alert('This is not a valid progress export.')}e.target.value='';});
-  document.querySelector('#resetBtn').addEventListener('click',()=>{if(confirm('Reset all damaged and restored artefact counts to 0?')){state=emptyProgress();saveState();showView(activeView)}});
+  document.querySelector('#resetBtn').addEventListener('click',()=>{state=emptyProgress();saveState();showView(activeView);document.querySelector('#saveStatus').textContent='All artefact counts reset to 0';});
   const install=document.querySelector('#installBtn');if(window.alt1){const configUrl=new URL('appconfig.json',window.location.href).href;install.hidden=false;try{window.alt1.identifyAppUrl(configUrl)}catch{}install.addEventListener('click',()=>{try{window.alt1.identifyAppUrl(configUrl)}catch{}})}
   renderCollections();
 })();
