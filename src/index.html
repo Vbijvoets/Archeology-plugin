@@ -30,7 +30,6 @@
     <button data-view="materials">Materials</button>
     <button data-view="summary">Summary</button>
     <button data-view="planner">Best 25</button>
-    <button data-view="planner120">99–120</button>
   </nav>
   <main>
     <section id="collectionsView" class="view active">
@@ -46,7 +45,6 @@
     <section id="materialsView" class="view"><div id="materialsContent"></div></section>
     <section id="summaryView" class="view"><div id="summaryContent"></div></section>
     <section id="plannerView" class="view"><div id="plannerContent"></div></section>
-    <section id="planner120View" class="view"><div id="planner120Content"></div></section>
   </main>
   <aside id="adSlot" class="ad-slot" aria-label="Advertisement" hidden>
     <span class="ad-label">Advertisement</span>
@@ -54,6 +52,7 @@
   </aside>
   <footer><span id="saveStatus">Saved locally</span><div><button id="exportBtn" type="button" class="link-button">Export</button><label class="link-button file-label">Import<input id="importInput" type="file" accept="application/json"></label><button id="resetBtn" type="button" class="link-button danger">Reset</button></div></footer>
   <script src="data.js"></script>
+  <script src="levels.js"></script>
   <script src="app.js"></script>
   <script src="adconfig.js"></script>
   <script src="ad-loader.js"></script>
