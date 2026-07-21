@@ -24,64 +24,36 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3112681455071923" crossorigin="anonymous"></script>
 </head>
 <body class="website">
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Archaeology Collections home">
-      <img src="dist/icon.png" width="38" height="38" alt="">
-      <span><strong>Archaeology</strong><small>Collections</small></span>
-    </a>
-    <nav aria-label="Website navigation"><a href="#tracker">Tracker</a><a href="#features">Features</a><a href="#privacy">Privacy</a></nav>
-    <a class="nav-cta" href="alt1://addapp/https://archeology-collections.fun/dist/appconfig.json">Add to Alt1</a>
+  <header class="app-header">
+    <div><p class="eyebrow">COLLECTION TRACKER</p><h1>Archaeology Collections</h1></div>
+    <a class="ghost install-link" href="alt1://addapp/https://archeology-collections.fun/dist/appconfig.json">Add to Alt1</a>
+    <button id="installBtn" class="ghost" hidden>Add to Alt1</button>
   </header>
-
-  <main class="site-main" id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="kicker">A focused Archaeology companion</p>
-        <h1 id="hero-title">Plan restorations.<br><span>Track every find.</span></h1>
-        <p class="hero-lede">Keep every collection, required material, XP reward and chronote total together—without an account or spreadsheet.</p>
-        <div class="hero-actions"><a class="primary-button" href="#tracker">Open the tracker</a><a class="secondary-button" href="alt1://addapp/https://archeology-collections.fun/dist/appconfig.json">Use in Alt1</a></div>
-        <ul class="trust-list" aria-label="Tracker highlights"><li><strong>73</strong> collections</li><li><strong>485</strong> artefacts</li><li><strong>Private</strong> browser storage</li></ul>
+  <nav class="tabs" aria-label="Tracker menu">
+    <button data-view="collections" class="active">Collections</button>
+    <button data-view="materials">Materials</button>
+    <button data-view="summary">Summary</button>
+  </nav>
+  <main>
+    <section id="collectionsView" class="view active">
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search collection or artefact…" aria-label="Search">
+        <select id="groupFilter" aria-label="Collection type"><option value="all">All</option><option value="Collectors">Collectors</option><option value="Museum">Museum</option></select>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="catalog-card catalog-card-main"><span class="catalog-number">COLLECTION 07</span><strong>Restoration plan</strong><div class="catalog-line"><i style="width:78%"></i></div><div class="catalog-line"><i style="width:52%"></i></div><div class="catalog-stats"><span>12 artefacts</span><span>4 materials</span></div></div>
-        <div class="catalog-card catalog-card-small"><span>ARCHIVE</span><strong>Progress saved</strong></div><div class="seal">A</div>
-      </div>
-    </section>
-
-    <section class="tracker-section" id="tracker" aria-labelledby="tracker-title">
-      <div class="section-heading"><div><p class="kicker">Your working archive</p><h2 id="tracker-title">Archaeology collection tracker</h2></div><p>Changes are saved automatically in this browser. No sign-in required.</p></div>
-      <div class="tracker-shell">
-        <header class="app-header"><div><p class="eyebrow">COLLECTION PLANNER</p><h1>Archaeology Collections</h1></div><button id="installBtn" class="ghost" hidden>Add to Alt1</button></header>
-        <nav class="tabs" aria-label="Tracker menu"><button data-view="collections" class="active">Collections</button><button data-view="materials">Materials</button><button data-view="summary">Summary</button></nav>
-        <div class="tracker-main">
-          <section id="collectionsView" class="view active">
-            <div class="toolbar"><input id="search" type="search" placeholder="Search collection or artefact…" aria-label="Search"><select id="groupFilter" aria-label="Collection type"><option value="all">All</option><option value="Collectors">Collectors</option><option value="Museum">Museum</option></select></div>
-            <div class="layout"><aside id="collectionList" class="collection-list" aria-label="Collections"></aside><article id="collectionDetail" class="detail"></article></div>
-          </section>
-          <section id="materialsView" class="view"><div id="materialsContent"></div></section>
-          <section id="summaryView" class="view"><div id="summaryContent"></div></section>
-        </div>
-        <aside id="adSlot" class="ad-slot" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span><div id="adMount" class="ad-mount"></div></aside>
-        <div class="tracker-footer"><span id="saveStatus">Saved in this browser</span><div><button id="exportBtn" type="button" class="link-button">Export</button><label class="link-button file-label">Import<input id="importInput" type="file" accept="application/json"></label><button id="resetBtn" type="button" class="link-button danger">Reset</button></div></div>
+      <div class="layout">
+        <aside id="collectionList" class="collection-list" aria-label="Collections"></aside>
+        <article id="collectionDetail" class="detail"></article>
       </div>
     </section>
-
-    <section class="feature-section" id="features" aria-labelledby="features-title">
-      <div class="section-heading compact"><div><p class="kicker">Built for the full dig</p><h2 id="features-title">Everything needed for restoration planning</h2></div></div>
-      <div class="feature-grid">
-        <article><span>01</span><h3>Collection progress</h3><p>Record damaged and restored artefacts across collectors and museum sets.</p></article>
-        <article><span>02</span><h3>Material totals</h3><p>See the exact materials required for one collection or your complete restoration queue.</p></article>
-        <article><span>03</span><h3>XP and chronotes</h3><p>Calculate restoration XP, outfit-adjusted XP, chronotes and completed set bonuses.</p></article>
-      </div>
-    </section>
-
-    <section class="privacy-section" id="privacy">
-      <div><p class="kicker">Private by default</p><h2>Your progress stays on your device</h2></div>
-      <p>Artefact counts are stored in your browser's local storage. This works like persistent website cookies, but has enough room for the full tracker and is never sent to this website. Use Export if you want to move progress to another browser or domain.</p>
-    </section>
+    <section id="materialsView" class="view"><div id="materialsContent"></div></section>
+    <section id="summaryView" class="view"><div id="summaryContent"></div></section>
   </main>
-
-  <div class="site-footer"><span>Archaeology Collections</span><span>An independent community tracker for RuneScape Archaeology.</span></div>
+  <aside id="adSlot" class="ad-slot" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span><div id="adMount" class="ad-mount"></div></aside>
+  <footer class="tracker-footer"><span id="saveStatus">Saved in this browser</span><div><button id="exportBtn" type="button" class="link-button">Export</button><label class="link-button file-label">Import<input id="importInput" type="file" accept="application/json"></label><button id="resetBtn" type="button" class="link-button danger">Reset</button></div></footer>
+  <section class="privacy-note" id="privacy" aria-labelledby="privacy-title">
+    <div><span>Privacy</span><h2 id="privacy-title">Your progress stays on your device</h2></div>
+    <p>Artefact counts are stored in your browser's local storage. They are not sent to this website. Use Export to move your progress to another browser or device.</p>
+  </section>
   <script src="dist/data.js"></script><script src="dist/app.js"></script><script src="dist/adconfig.js"></script><script src="dist/ad-loader.js"></script>
 </body>
 </html>
