@@ -7,9 +7,7 @@
   const clientIsValid = /^ca-pub-\d+$/.test(config?.client || '');
   const slotIsValid = /^\d+$/.test(config?.slot || '');
 
-  // Standard AdSense tags are allowed on the normal website, but not inside
-  // Alt1's unsupported Windows Chromium WebView.
-  if (window.alt1 || !config?.enabled || !clientIsValid || !slotIsValid || !container || !mount) return;
+  if (!config?.enabled || !clientIsValid || !slotIsValid || !container || !mount) return;
 
   const script = document.createElement('script');
   const advert = document.createElement('ins');

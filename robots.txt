@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://archeology-collections.fun/sitemap.xml
+Sitemap: https://w290pengs.com/sitemap.xml
