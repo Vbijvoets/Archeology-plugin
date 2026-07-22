@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://w290pengs.com/sitemap.xml
+Sitemap: https://world290pengs.com/sitemap.xml

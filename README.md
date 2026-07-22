@@ -6,7 +6,7 @@ A browser-based RuneScape Archaeology collection tracker. It tracks damaged and 
 
 The production website is published with GitHub Pages from the `master` branch:
 
-https://w290pengs.com/
+https://world290pengs.com/
 
 The site is static and requires no server, database, account or sign-in.
 
